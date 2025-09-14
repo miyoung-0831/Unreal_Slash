@@ -1,0 +1,66 @@
+# =========================
+# Unreal Engine 5 .gitignore
+# =========================
+
+# --- 엔진/빌드 산출물 ---
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/
+*.Target.cs
+
+# --- 프로젝트 파일 ---
+*.sln
+*.suo
+*.xcodeproj
+*.xcworkspace
+*.xcuserstate
+
+# --- IDE 관련 ---
+.vs/
+.vscode/
+*.VC.db
+*.VC.opendb
+*.VC.db-shm
+*.VC.db-wal
+
+# --- 로그 / 캐시 ---
+*.log
+*.tlog
+*.pdb
+*.idb
+*.opendb
+*.cache
+*.db
+*.db-shm
+*.db-wal
+
+# --- 파이썬 ---
+__pycache__/
+*.pyc
+
+# --- OS 파일 ---
+.DS_Store
+Thumbs.db
+
+# --- UE5 특화 ---
+# Nanite, Lumen, Virtual Shadow Map 등 캐시
+DerivedDataCache/
+DerivedDataCacheBoot.ddc
+DerivedDataCacheCooked.ddc
+Engine/DerivedDataCache/
+*.ushadercache
+*.usf
+
+# --- 플러그인 빌드 산출물 ---
+Plugins/*/Binaries/
+Plugins/*/Intermediate/
+Plugins/*/Saved/
+
+# --- Keep ---
+!Config/
+!Source/
+!Content/
+!*.uproject
+!*.uplugin
