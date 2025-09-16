@@ -2,10 +2,7 @@
 
 
 #include "Items/Item.h"
-#include "DrawDebugHelpers.h"
-
-#define THIRTY 30
-#define DRAW_SPHERE(LOCATION) if (GetWorld()) DrawDebugSphere(GetWorld(), LOCATION, 25.f, 12, FColor::Red, true);
+#include "Slash/DebugMacros.h"
 
 // Sets default values
 AItem::AItem()
@@ -20,33 +17,19 @@ void AItem::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	UE_LOG(LogTemp, Warning, TEXT("Begin Play called!"));
-
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(1, 60.f, FColor::Cyan, FString("Item OnScreen Message!"));
-	}
-
 	UWorld* World = GetWorld();
-
 	FVector Location = GetActorLocation();
+	FVector Forward = GetActorForwardVector();
+
 	DRAW_SPHERE(Location);
+	//DRAW_LINE(Location, Location + Forward * 100.f);
+	//DRAW_POINT(Location + Forward * 100.f);
+	DRAW_VECTOR(Location, Location + Forward * 100.f);
 }
 
 // Called every frame
 void AItem::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-	UE_LOG(LogTemp, Warning, TEXT("DeltaTime %f"), DeltaTime);
-
-	if (GEngine)
-	{
-		FString Name = GetName();
-		FString Message = FString::Printf(TEXT("Item Name: %s"), *Name);
-		GEngine->AddOnScreenDebugMessage(1, 60.f, FColor::Cyan, Message);
-
-		UE_LOG(LogTemp, Warning, TEXT("Item Name : %s"), *Name);
-	}
 }
 
